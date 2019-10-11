@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'n=_c&*k4do9lwh(l-75fv3^yg+-g!g!jo#o!8*%uh&gncrw(_i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -31,13 +31,13 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'cotizador.apps.CotizadorConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cotizador.apps.CotizadorConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,12 +77,18 @@ WSGI_APPLICATION = 'asrural.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'csw',
-        'USER': 'Willie',
-        'PASSWORD': '4101990',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'csw',
+        #'USER': 'Willie',
+        #'PASSWORD': '4101990',
+        #'HOST': 'localhost',
+        #'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -124,5 +130,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")

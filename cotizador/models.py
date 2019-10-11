@@ -40,7 +40,7 @@ class Vehiculo (models.Model):
 		return self.marca
 
 class Cotizacion (models.Model):
-	vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE, default=Vehiculo.objects.last())
+	vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
 	deducible = models.FloatField(default=0)
 	deducible_robo = models.FloatField(default=0)
 	lesiones = models.IntegerField(default=0)
@@ -403,4 +403,5 @@ class Cotizacion (models.Model):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.045)*1.05)+(self.vehiculo.valor*.035)*.1347)*1.12
 		if (self.vehiculo.valor>70000 and self.vehiculo.valor<=250000):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.0425)*1.05)+(self.vehiculo.valor*.035)*.1347)*1.12
-		return self.mensual_valor_Seguro	
+		return self.mensual_valor_Seguro
+		
