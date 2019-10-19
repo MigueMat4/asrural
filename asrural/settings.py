@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cotizador.apps.CotizadorConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [
