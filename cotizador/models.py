@@ -145,7 +145,6 @@ class Cotizacion (models.Model):
 		return round(self.anual_valor_Seguro, 2)
 
 	def semestral_automovil(self):
-
 		if (self.vehiculo.valor<=30000):
 			self.semestral_valor_Seguro=(1600+(1600*.05)+(1600*.065))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -166,7 +165,6 @@ class Cotizacion (models.Model):
 		return self.semestral_valor_Seguro
 
 	def trimestral_automovil(self):
-
 		if (self.vehiculo.valor<=30000):
 			self.trimestral_valor_Seguro=(1600+(1600*.05)+(1600*.095))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -187,7 +185,6 @@ class Cotizacion (models.Model):
 		return self.trimestral_valor_Seguro
 
 	def mensual_automovil(self):
-
 		if (self.vehiculo.valor<=30000):
 			self.mensual_valor_Seguro=(1600+(1600*.05)+(1600*.1347))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -207,10 +204,7 @@ class Cotizacion (models.Model):
 		self.mensual_valor_Seguro = round(self.mensual_valor_Seguro, 2)
 		return self.mensual_valor_Seguro
 
-
-
-	def anual_camioneta(self):
-		
+	def anual_camioneta(self):	
 		if (self.vehiculo.valor<=30000):
 			self.anual_valor_Seguro=(1600+(1600*.05))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -227,10 +221,10 @@ class Cotizacion (models.Model):
 			self.anual_valor_Seguro=((self.vehiculo.valor*0.0369)*1.05)*1.12
 		if (self.vehiculo.valor>100000 and self.vehiculo.valor<=250000):
 			self.anual_valor_Seguro=((self.vehiculo.valor*0.035)*1.05)*1.12
+		self.anual_valor_Seguro = round(self.anual_valor_Seguro, 2)
 		return self.anual_valor_Seguro
 
 	def semestral_camioneta(self):
-
 		if (self.vehiculo.valor<=30000):
 			self.semestral_valor_Seguro=(1600+(1600*.05)+(1600*.065))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -247,10 +241,10 @@ class Cotizacion (models.Model):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.0369)*1.05)+(self.vehiculo.valor*.035)*.065)*1.12
 		if (self.vehiculo.valor>100000 and self.vehiculo.valor<=250000):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.035)*1.05)+(self.vehiculo.valor*.035)*.065)*1.12
+		self.semestral_valor_Seguro = round(self.semestral_valor_Seguro, 2)
 		return self.semestral_valor_Seguro
 
 	def trimestral_camioneta(self):
-
 		if (self.vehiculo.valor<=30000):
 			self.trimestral_valor_Seguro=(1600+(1600*.05)+(1600*.095))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -267,10 +261,10 @@ class Cotizacion (models.Model):
 			self.trimestral_valor_Seguro=(((self.vehiculo.valor*0.0369)*1.05)+(self.vehiculo.valor*.035)*.095)*1.12
 		if (self.vehiculo.valor>100000 and self.vehiculo.valor<=250000):
 			self.trimestral_valor_Seguro=(((self.vehiculo.valor*0.035)*1.05)+(self.vehiculo.valor*.035)*.095)*1.12
+		self.trimestral_valor_Seguro = round(self.trimestral_valor_Seguro, 2)
 		return self.trimestral_valor_Seguro
 
 	def mensual_camioneta(self):
-
 		if (self.vehiculo.valor<=30000):
 			self.mensual_valor_Seguro=(1600+(1600*.05)+(1600*.1347))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -287,12 +281,10 @@ class Cotizacion (models.Model):
 			self.mensual_valor_Seguro=(((self.vehiculo.valor*0.0369)*1.05)+(self.vehiculo.valor*.035)*.1347)*1.12
 		if (self.vehiculo.valor>100000 and self.vehiculo.valor<=250000):
 			self.mensual_valor_Seguro=(((self.vehiculo.valor*0.035)*1.05)+(self.vehiculo.valor*.035)*.1347)*1.12
+		self.mensual_valor_Seguro = round(self.mensual_valor_Seguro, 2)
 		return self.mensual_valor_Seguro
-
-
 	
-	def anual_pickup(self):
-		
+	def anual_pickup(self):		
 		if (self.vehiculo.valor<=30000):
 			self.anual_valor_Seguro=(1700+(1700*.05))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -307,10 +299,10 @@ class Cotizacion (models.Model):
 			self.anual_valor_Seguro=((self.vehiculo.valor*0.048)*1.05)*1.12
 		if (self.vehiculo.valor>100000 and self.vehiculo.valor<=250000):
 			self.anual_valor_Seguro=((self.vehiculo.valor*0.045)*1.05)*1.12
+		self.anual_valor_Seguro = round(self.anual_valor_Seguro, 2)
 		return self.anual_valor_Seguro
 
 	def semestral_pickup(self):
-
 		if (self.vehiculo.valor<=30000):
 			self.semestral_valor_Seguro=(1700+(1700*.05)+(1700*.065))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -325,10 +317,10 @@ class Cotizacion (models.Model):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.048)*1.05)+(self.vehiculo.valor*.035)*.065)*1.12
 		if (self.vehiculo.valor>100000 and self.vehiculo.valor<=250000):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.045)*1.05)+(self.vehiculo.valor*.035)*.065)*1.12
+		self.semestral_valor_Seguro = round(self.semestral_valor_Seguro, 2)
 		return self.semestral_valor_Seguro
 
 	def trimestral_pickup(self):
-
 		if (self.vehiculo.valor<=30000):
 			self.trimestral_valor_Seguro=(1700+(1700*.05)+(1700*.095))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -343,10 +335,10 @@ class Cotizacion (models.Model):
 			self.trimestral_valor_Seguro=(((self.vehiculo.valor*0.048)*1.05)+(self.vehiculo.valor*.035)*.095)*1.12
 		if (self.vehiculo.valor>100000 and self.vehiculo.valor<=250000):
 			self.trimestral_valor_Seguro=(((self.vehiculo.valor*0.045)*1.05)+(self.vehiculo.valor*.035)*.095)*1.12
+		self.trimestral_valor_Seguro = round(self.trimestral_valor_Seguro, 2)
 		return self.trimestral_valor_Seguro
 
 	def mensual_pickup(self):
-
 		if (self.vehiculo.valor<=30000):
 			self.mensual_valor_Seguro=(1700+(1700*.05)+(1700*.1347))*1.12
 		if (self.vehiculo.valor>30000 and self.vehiculo.valor<=38000):
@@ -361,47 +353,45 @@ class Cotizacion (models.Model):
 			self.mensual_valor_Seguro=(((self.vehiculo.valor*0.048)*1.05)+(self.vehiculo.valor*.035)*.1347)*1.12
 		if (self.vehiculo.valor>100000 and self.vehiculo.valor<=250000):
 			self.mensual_valor_Seguro=(((self.vehiculo.valor*0.045)*1.05)+(self.vehiculo.valor*.035)*.1347)*1.12
+		self.mensual_valor_Seguro = round(self.mensual_valor_Seguro, 2)
 		return self.mensual_valor_Seguro	
 
-
-
-	def anual_mini(self):
-		
+	def anual_mini(self):		
 		if (self.vehiculo.valor<=44444.44):
 			self.anual_valor_Seguro=(2000+(2000*.05))*1.12
 		if (self.vehiculo.valor>44444.44 and self.vehiculo.valor<=70000):
 			self.anual_valor_Seguro=((self.vehiculo.valor*0.045)*1.05)*1.12
 		if (self.vehiculo.valor>70000 and self.vehiculo.valor<=250000):
 			self.anual_valor_Seguro=((self.vehiculo.valor*0.0425)*1.05)*1.12
+		self.anual_valor_Seguro = round(self.anual_valor_Seguro, 2)
 		return self.anual_valor_Seguro
 		
 	def semestral_mini(self):
-
 		if (self.vehiculo.valor<=44444.44):
 			self.semestral_valor_Seguro=(2000+(2000*.05)+(2000*.065))*1.12
 		if (self.vehiculo.valor>44444.44 and self.vehiculo.valor<=70000):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.045)*1.05)+(self.vehiculo.valor*.035)*.065)*1.12
 		if (self.vehiculo.valor>70000 and self.vehiculo.valor<=250000):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.0425)*1.05)+(self.vehiculo.valor*.035)*.065)*1.12
+		self.semestral_valor_Seguro = round(self.semestral_valor_Seguro, 2)
 		return self.semestral_valor_Seguro
 
 	def trimestral_mini(self):
-
 		if (self.vehiculo.valor<=44444.44):
 			self.trimestral_valor_Seguro=(2000+(2000*.05)+(2000*.095))*1.12
 		if (self.vehiculo.valor>44444.44 and self.vehiculo.valor<=70000):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.045)*1.05)+(self.vehiculo.valor*.035)*.095)*1.12
 		if (self.vehiculo.valor>70000 and self.vehiculo.valor<=250000):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.0425)*1.05)+(self.vehiculo.valor*.035)*.095)*1.12
+		self.trimestral_valor_Seguro = round(self.trimestral_valor_Seguro, 2)
 		return self.trimestral_valor_Seguro
 
 	def mensual_mini(self):
-
 		if (self.vehiculo.valor<=44444.44):
 			self.mensual_valor_Seguro=(2000+(2000*.05)+(2000*.1347))*1.12
 		if (self.vehiculo.valor>44444.44 and self.vehiculo.valor<=70000):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.045)*1.05)+(self.vehiculo.valor*.035)*.1347)*1.12
 		if (self.vehiculo.valor>70000 and self.vehiculo.valor<=250000):
 			self.semestral_valor_Seguro=(((self.vehiculo.valor*0.0425)*1.05)+(self.vehiculo.valor*.035)*.1347)*1.12
+		self.mensual_valor_Seguro = round(self.mensual_valor_Seguro, 2)
 		return self.mensual_valor_Seguro
-		

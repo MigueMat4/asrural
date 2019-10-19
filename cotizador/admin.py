@@ -2,8 +2,10 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from django.shortcuts import redirect
-
 from .models import *
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
+
 
 #admin .site.register(Cliente)
 #admin .site.register(Vehiculo)
@@ -22,11 +24,18 @@ class UserAdmin(UserAdmin):
 	model = User
 	inlines = [EmpleadoInline, ]
 
-class ClienteAdmin(admin.ModelAdmin):
+class ClienteResource(resources.ModelResource):
+	class Meta:
+		model = Cliente
+
+class ClienteAdmin(ImportExportModelAdmin):
 	fieldsets = [
 		(None, {'fields': ['nombre_Cliente','celular_Cliente','correo_Cliente']}),
 	]
 	
+	#para que muestre boton exportar documento
+	resource_class = ClienteResource
+
 	def save_model(self, request, obj, form, change):
 		obj.empleado=request.user.empleado
 		super().save_model(request, obj, form, change)
@@ -37,10 +46,17 @@ class ClienteAdmin(admin.ModelAdmin):
 	def response_change(self, request, obj, post_url_continue=None):
 		return redirect('/admin/cotizador/vehiculo/add')
 
-class VehiculoAdmin(admin.ModelAdmin):
+class VehiculoResource(resources.ModelResource):
+	class Meta:
+		model = Vehiculo
+
+class VehiculoAdmin(ImportExportModelAdmin):
 	fieldsets = [
 		(None, {'fields': ['cliente','marca','linea','tipo','asientos','valor']}),
 	]
+
+	#para que muestre boton exportar documento
+	resource_class = VehiculoResource
 
 	def get_readonly_fields(self,request,obj=None):
 		if obj:
@@ -61,12 +77,19 @@ class VehiculoAdmin(admin.ModelAdmin):
 			form.base_fields['cliente'].initial=Cliente.objects.last()
 		return form
 
+class CotizacionResource(resources.ModelResource):
+	class Meta:
+		model = Cotizacion
 
-class CotizacionAdmin(admin.ModelAdmin):
+class CotizacionAdmin(ImportExportModelAdmin):
 	fieldsets = [
 		('Información de cotización: ', {'fields': ['vehiculo','deducible','deducible_robo','lesiones','accidentes','anual_valor_Seguro']}),
 	]
-	readonly_fields = ('deducible','deducible_robo','lesiones','accidentes','anual_valor_Seguro')
+	readonly_fields = ('vehiculo','deducible','deducible_robo','lesiones','accidentes','anual_valor_Seguro')
+	#search_fields = ['anual_valor_Seguro']
+	#list_display = ('vehiculo','deducible','deducible_robo','lesiones','accidentes','anual_valor_Seguro')
+	#para que muestre boton exportar documento
+	resource_class = CotizacionResource
 
 	def get_readonly_fields(self,request,obj=None):
 		if obj:
